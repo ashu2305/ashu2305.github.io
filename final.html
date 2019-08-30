@@ -11,7 +11,7 @@
             var days = Math.floor(d/(1000*60*60*24)) ;
             var hours= Math.floor((d%(1000*60*60*24))/(1000*60*60)) ;
             var minutes= Math.floor((d%(1000*60*60))/(1000*60));
-            var seconds= Math.floor((d%(1000*60))/1000);
+            var seconds= Math.floor((d%(1000*60))/1000);//kajskjas
             if(days<10)
                 {
                     days= "0"+days;
@@ -28,7 +28,7 @@
                 {
                     seconds= "0"+seconds;
                 }
-            document.getElementById("days").innerHTML= days+" days to go";
+            document.getElementById("days").innerHTML= days+" DAYS TO GO";
             if(d<=0)
                 {clearInterval(x);}
         },1000);
@@ -43,6 +43,7 @@
 			scroll-behavior: smooth;
 			scroll-snap-align: start;
 			scroll-snap-stop: always;
+			overflow: hidden;
 		}
 		.mainbody{
 			scroll-behavior: smooth;
@@ -57,8 +58,9 @@
             overflow-x: hidden;
             
 		}
-        .main wd{
+        .main{
             overflow-y: hidden;
+            height: 100vh;
         }
 		.text{
 			color: white;
@@ -126,7 +128,7 @@
 		.coming{
 			position: absolute;
 			margin-left: 5vw;
-			margin-top:6vh;
+			margin-top:17vh;
 			color: #ffffff;
 			margin-bottom:1vw; 
 		}
@@ -134,12 +136,19 @@
 				  font-family: 'Modulus';
 				  src: url("Modulus.ttf?v=2.0.0") format("truetype") ;
 			}
+		@font-face{
+				  font-family: 'Existence-Light';
+				  src: url("Existence-Light.otf?v=2.0.0") format("opentype") ;
+			}
 		.comingsoon{
 			position: relative;
-			font-family: 'Modulus';
+			font-family: 'Existence-Light';
+			letter-spacing: 8px;
+			font-weight: 200;
 			color: white;
 			font-size: 5vw;
 			z-index: 100;
+			margin-left: 1vw;
 		}
 			.days{
 				color: white;
@@ -176,16 +185,19 @@
 	width: 40vw;
 }
 .conflu-content{
-	font-size:1.6vw;
+	font-size:1.5vw;
 	text-align: justify;
+	font-family: 'Modulus';
 	color:#D3D1D1;
 }
 .timer{
 	position: absolute;
-	width: 40vw;
+	width: 30vw;
+	height: 7vw;
 	margin-top: 30vh;
 	padding: 0;
-	border-radius: 6vw;
+	margin-left: 5vw;
+	border-radius: 8vw;
 	text-align: center;
 	background: rgb(190,41,130);
 	background: linear-gradient(360deg, rgba(190,41,130,1) 0%, rgba(71,26,108,1) 100%);
@@ -193,12 +205,16 @@
 #days{
 	margin:0.5vw;
 	position: relative;
-	color: white;
+	margin-top: 1.7vw;
+	font-family: 'Modulus';
+	font-weight: 580;
+	color: black;
 	font-size: 3vw;
 }
 .hrline{
 	width: 40vw;
 	height: 0.3vh;
+	margin-top: -2vw;
 	background: rgb(190,41,130);
 background: radial-gradient(circle, rgba(190,41,130,1) 0%, rgba(71,26,108,1) 100%);
 border:none;
@@ -237,6 +253,7 @@ border:none;
                 display: flex;
      justify-content: center;
      margin-top: 5vh;
+    padding-bottom: 5vw;
                
                 
                 
@@ -297,9 +314,18 @@ border:none;
         
         
         @media only screen and (max-width: 500px){
+            .mainbody{
+                scroll-snap-type: none;
+            }
+            .main{
+                height: 120vh;
+            }
+            .teaser{
+                height: auto;
+            }
             .chakra{
 			margin-left: 8vw; 
-                margin-top: 8vw;
+                margin-top: 13vw;
 				width: 80vw;
 			height: 80vw;
 		}
@@ -324,53 +350,62 @@ border:none;
 			height: 80vw;
 		}
             .title{
-			margin-top: 28.3vw;
+			margin-top: 29.3vw;
 			width: 35vw;
-			margin-left: 0vw;
-                width: 80vw;
+			margin-left: 5vw;
+                width: 70vw;
                 height: auto;
 		}
             .comingsoon{
                 font-size: 8vw;
                 text-align: center;
-                margin-left: 3vw;
+                margin-left: 0vw;
+                margin-top: -9vh;
             }
             .coming{
-			margin-left: 17vw;
-			margin-top:54vh;
+			margin-left: 10vw;
+			margin-top:112vw;
 			margin-bottom:1vw; 
 		}
             .timer{
                 width: 60vw;
                 height: 7vh;
-                margin-top: 5vh;
+                margin-top: 25vh;
+                margin-left: 7vw;
                 padding: 0;
 }
             #days{
-	margin:0.5vw;
+	margin-top:2vw;
 	position: relative;
-	color: white;
+	
 	font-size: 6vw;
 }
             .hrline{
-                display: none;
-            } 
-            .content{
-                display: none;
+                width: 72vw;
             }
+            .content{
+                width: 72vw;
+                margin-left: 2vw;
+            }
+            .conflu-content{
+                font-size: 3vw;
+            }
+           
               .t-hrline{
-                margin-top: 4vh;
-                width: 80%;
-                   display: block;
+               
+                   display: none;
             }
             .t-content{
-                width: 80%;
-                margin-left: 10vw;
-                 display: block;
+               
+                 display: none;
             }
              .t-content .conflu-content{
                  font-size: 3.3vw;
              } 
+            .teaser{
+                position: relative;
+                top: -16vw;
+            }
             .vid{
    margin-left: 0vw;
     margin-top: 6vw;
@@ -384,7 +419,7 @@ border:none;
          @media only screen and (max-width: 700px) and (min-width:501px){
             .chakra{
 			margin-left: 12.6vw; 
-                margin-top: 4vw;
+                margin-top: 8vw;
 				width: 80vw;
 			height: 80vw;
 		}
@@ -419,9 +454,10 @@ border:none;
                 font-size: 7vw;
                 text-align: center;
                 margin-left: 3vw;
+                margin-top: -1vw;
             }
             .coming{
-			margin-left: 19vw;
+			margin-left: 15vw;
 			margin-top:70vh;
 			margin-bottom:1vw; 
 		}
@@ -434,7 +470,7 @@ border:none;
             #days{
 	margin:0.5vw;
 	position: relative;
-	color: white;
+	
 	font-size: 6vw;
 }
             .hrline{
@@ -517,10 +553,10 @@ border:none;
                 padding: 0;
 }
             #days{
-	margin-top:-0.4vw;
+	margin-top:1vw;
 	position: relative;
-	color: white;
-	font-size: 6vw;
+	
+	font-size: 4vw;
 }
             .hrline{
                 display: none;
